@@ -4,6 +4,11 @@ import theme from '../../styles/theme';
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+
+  const handleAuthBtnClick = () => {
+    setIsAuthModalOpen(!isAuthModalOpen);
+  };
 
   return (
     <Wrapper>
@@ -20,9 +25,9 @@ const Header = () => {
           </>
         ) : (
           <>
-            <Span>로그인</Span>
+            <Span onClick={handleAuthBtnClick}>로그인</Span>
             <Border />
-            <Span>회원가입</Span>
+            <Span onClick={handleAuthBtnClick}>회원가입</Span>
           </>
         )}
       </User>

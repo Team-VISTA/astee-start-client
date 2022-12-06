@@ -48,11 +48,15 @@ const defaultStyle = css`
     height: 100%;
   }
 
-  a,
-  a:hover {
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer;
+  input {
+    background: none;
+    border: none;
+    outline: none;
+  }
+
+  button {
+    background: none;
+    border: none;
   }
 `;
 
