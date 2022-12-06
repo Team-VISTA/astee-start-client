@@ -1,5 +1,7 @@
+import Layout from '../layout/Layout';
+
 const Analysis = () => {
-  return <div>Analysis</div>;
+  return <Layout>Analysis</Layout>;
 };
 
 export default Analysis;

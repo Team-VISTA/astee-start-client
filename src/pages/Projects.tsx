@@ -1,5 +1,7 @@
+import Layout from '../layout/Layout';
+
 const Projects = () => {
-  return <div>Projects</div>;
+  return <Layout>Projects</Layout>;
 };
 
 export default Projects;

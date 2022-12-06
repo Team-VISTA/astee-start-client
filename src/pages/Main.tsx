@@ -1,5 +1,7 @@
+import Layout from '../layout/Layout';
+
 const Main = () => {
-  return <div>Main</div>;
+  return <Layout>Main</Layout>;
 };
 
 export default Main;
