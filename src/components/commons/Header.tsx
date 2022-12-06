@@ -11,7 +11,7 @@ const Header = () => {
       <User>
         <Span>로그인</Span>
         <Border />
-        <Span>로그아웃</Span>
+        <Span>회원가입</Span>
       </User>
     </Wrapper>
   );
@@ -21,8 +21,8 @@ export default Header;
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 10vh;
-  padding: 0 36px 0 16px;
+  height: 12vh;
+  padding: 0 36px 0 20px;
 
   display: flex;
   align-items: center;
