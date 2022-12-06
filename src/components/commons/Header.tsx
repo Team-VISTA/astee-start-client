@@ -1,7 +1,10 @@
 import styled from '@emotion/styled';
+import { useState } from 'react';
 import theme from '../../styles/theme';
 
 const Header = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <Wrapper>
       <Brand>
@@ -9,9 +12,19 @@ const Header = () => {
         <Astee>Astee</Astee>
       </Brand>
       <User>
-        <Span>로그인</Span>
-        <Border />
-        <Span>회원가입</Span>
+        {isLoggedIn ? (
+          <>
+            <Span>마이페이지</Span>
+            <Border />
+            <Span>로그아웃</Span>
+          </>
+        ) : (
+          <>
+            <Span>로그인</Span>
+            <Border />
+            <Span>회원가입</Span>
+          </>
+        )}
       </User>
     </Wrapper>
   );
