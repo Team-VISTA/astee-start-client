@@ -1,4 +1,5 @@
 import { Global, css } from '@emotion/react';
+import theme from './theme';
 
 const defaultStyle = css`
   @font-face {
@@ -22,6 +23,8 @@ const defaultStyle = css`
     margin: 0;
     box-sizing: border-box;
     font-family: 'Pretendard', Arial, Helvetica, sans-serif;
+
+    background: ${theme.brand.bg};
   }
 
   html,
