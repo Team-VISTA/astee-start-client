@@ -38,9 +38,10 @@ const defaultStyle = css`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Pretendard', Arial, Helvetica, sans-serif;
 
+    color: ${theme.colors.white};
     background: ${theme.brand.bg};
+    font-family: 'Pretendard', Arial, Helvetica, sans-serif;
   }
 
   html,
@@ -57,6 +58,12 @@ const defaultStyle = css`
   button {
     background: none;
     border: none;
+  }
+
+  div,
+  img,
+  span {
+    background: none;
   }
 `;
 

@@ -1,25 +1,30 @@
 import styled from '@emotion/styled';
-import { useState } from 'react';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
+import { AuthModalContext } from '../../contexts/AuthModalContext';
 import theme from '../../styles/theme';
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const { isLogin }: any = useContext(AuthContext);
+  const { setIsAuthModalOpen }: any = useContext(AuthModalContext);
 
   const handleAuthBtnClick = () => {
-    setIsAuthModalOpen(!isAuthModalOpen);
+    setIsAuthModalOpen(true);
   };
 
   return (
     <Wrapper>
-      <Brand>
-        <Logo src="/images/astee.svg" />
-        <Astee>Astee</Astee>
-      </Brand>
+      <Router to="/">
+        <Brand>
+          <Logo src="/images/astee.svg" />
+          <Astee>Astee</Astee>
+        </Brand>
+      </Router>
       <User>
-        {isLoggedIn ? (
+        {isLogin ? (
           <>
-            <Span>마이페이지</Span>
+            <Span>내 프로젝트</Span>
             <Border />
             <Span>로그아웃</Span>
           </>
@@ -60,7 +65,7 @@ const Logo = styled.img`
   height: 32px;
 `;
 
-const Astee = styled.label`
+const Astee = styled.span`
   color: ${theme.brand.main};
   font-size: 28px;
 `;
@@ -83,4 +88,9 @@ const Border = styled.div`
   height: 15px;
   margin: 0 14px;
   background: ${theme.colors.white};
+`;
+
+const Router = styled(Link)`
+  text-decoration: none;
+  cursor: pointer;
 `;

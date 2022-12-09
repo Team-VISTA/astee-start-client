@@ -1,8 +1,21 @@
 import styled from '@emotion/styled';
+import { useContext } from 'react';
+import Auth from '../components/auth';
+import Upload from '../components/upload';
+import { AuthModalContext } from '../contexts/AuthModalContext';
+import { UploadModalContext } from '../contexts/UploadModalContext';
 import Layout from '../layout/Layout';
 import theme from '../styles/theme';
 
 const Main = () => {
+  const { isAuthModalOpen }: any = useContext(AuthModalContext);
+  const { isUploadModalOpen, setIsUploadModalOpen }: any =
+    useContext(UploadModalContext);
+
+  const handleUploadBtnClick = () => {
+    setIsUploadModalOpen(true);
+  };
+
   return (
     <Layout>
       <Wrapper>
@@ -21,9 +34,11 @@ const Main = () => {
               쉽고 편리하게 화면을 분석하고 서비스에 맞는 UIUX를 찾아보세요
             </Text>
           </TextArea>
-          <Button>화면 분석하기</Button>
+          <Button onClick={handleUploadBtnClick}>화면 분석하기</Button>
         </TextWrapper>
       </Wrapper>
+      {isAuthModalOpen && <Auth />}
+      {isUploadModalOpen && <Upload />}
     </Layout>
   );
 };
