@@ -58,12 +58,18 @@ const defaultStyle = css`
   button {
     background: none;
     border: none;
+    cursor: pointer;
   }
 
   div,
   img,
   span {
     background: none;
+  }
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
   }
 `;
 

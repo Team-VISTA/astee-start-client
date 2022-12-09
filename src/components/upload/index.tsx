@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { UploadModalContext } from '../../contexts/UploadModalContext';
 import Modal from '../../layout/Modal';
 import theme from '../../styles/theme';
@@ -11,15 +12,21 @@ const Upload = () => {
     setIsUploadModalOpen(false);
   };
 
+  const alertPopup = () => {
+    alert('준비 중입니다.');
+  };
+
   return (
-    <Modal closeModal={closeModal}>
+    <Modal height="90%" marginTop="0" closeModal={closeModal}>
       <TextField placeholder="프로젝트의 제목을 입력하세요" autoFocus />
       <InputImage src="/images/example.png" />
-      <UploadBtn>
+      <UploadBtn onClick={alertPopup}>
         <UploadIcon src="/icons/main_upload.svg" alt="Image upload Button" />
         이미지 업로드
       </UploadBtn>
-      <ConfirmBtn>UX 체크리스트 확인하기</ConfirmBtn>
+      <Link to="/projects">
+        <ConfirmBtn>UX 체크리스트 확인하기</ConfirmBtn>
+      </Link>
     </Modal>
   );
 };

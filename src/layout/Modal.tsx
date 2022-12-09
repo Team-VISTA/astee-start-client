@@ -2,7 +2,8 @@ import styled from '@emotion/styled';
 import Overlay from '../components/commons/Overlay';
 import theme from '../styles/theme';
 
-const Modal = ({ children, closeModal }: any) => {
+const Modal = ({ children, height, marginTop, closeModal }: any) => {
+  // 90% 12px
   return (
     <>
       <Wrapper>
@@ -11,7 +12,9 @@ const Modal = ({ children, closeModal }: any) => {
           alt="Exit button"
           onClick={closeModal}
         />
-        <Content>{children}</Content>
+        <Content height={height} marginTop={marginTop}>
+          {children}
+        </Content>
       </Wrapper>
       <Overlay />
     </>
@@ -48,15 +51,15 @@ const Exit = styled.img`
   cursor: pointer;
 `;
 
-const Content = styled.div`
+const Content = styled.div<any>`
   width: 92%;
-  height: 90%;
+  height: ${({ height }) => height};
+  margin-top: ${({ marginTop }) => marginTop};
+
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-
-  background: none;
 `;
 
 export default Modal;

@@ -1,13 +1,20 @@
 import styled from '@emotion/styled';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import { AuthModalContext } from '../../contexts/AuthModalContext';
 import theme from '../../styles/theme';
+import Logo from './Logo';
 
 const Header = () => {
-  const { isLogin }: any = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { isLogin, setIsLogin }: any = useContext(AuthContext);
   const { setIsAuthModalOpen }: any = useContext(AuthModalContext);
+
+  const handleLogoutBtnClick = () => {
+    setIsLogin(false);
+    navigate('/');
+  };
 
   const handleAuthBtnClick = () => {
     setIsAuthModalOpen(true);
@@ -15,18 +22,17 @@ const Header = () => {
 
   return (
     <Wrapper>
-      <Router to="/">
-        <Brand>
-          <Logo src="/images/astee.svg" />
-          <Astee>Astee</Astee>
-        </Brand>
-      </Router>
+      <Link to="/">
+        <Logo width="108px" image="32px" font="28px" />
+      </Link>
       <User>
         {isLogin ? (
           <>
-            <Span>내 프로젝트</Span>
+            <Link to="/projects">
+              <Span>내 프로젝트</Span>
+            </Link>
             <Border />
-            <Span>로그아웃</Span>
+            <Span onClick={handleLogoutBtnClick}>로그아웃</Span>
           </>
         ) : (
           <>
@@ -52,24 +58,6 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
-const Brand = styled.div`
-  width: 108px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const Logo = styled.img`
-  width: 32px;
-  height: 32px;
-`;
-
-const Astee = styled.span`
-  color: ${theme.brand.main};
-  font-size: 28px;
-`;
-
 const User = styled.div`
   display: flex;
   align-items: center;
@@ -88,9 +76,4 @@ const Border = styled.div`
   height: 15px;
   margin: 0 14px;
   background: ${theme.colors.white};
-`;
-
-const Router = styled(Link)`
-  text-decoration: none;
-  cursor: pointer;
 `;
